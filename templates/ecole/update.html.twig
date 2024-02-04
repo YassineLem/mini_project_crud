@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+{% block content %}
+<style>
+  h3{
+    text-align:center;
+    color:blue;
+  }
+  button{
+    margin-top: 30px
+  }
+  .id{
+    text-align:center;
+  }
+</style>  
+<div class="container">
+  <div class="row">
+    <h3 class="mt-5 mb-5">Modifier Une Ecole</h3>
+    {% for message in app.flashes('notice')%}
+     <div class="alert alert-success">
+       {{ message }}
+     </div>
+    {% endfor %}
+    <div class="col-md-6 offset-md-3">
+  {{form_start(form)}}
+    <input class="form-control id" disabled value="{{ ecoleId }}"></input>
+    <div class="form-goup">
+      {{form_label(form.Nom)}}
+      {{form_widget(form.Nom,{'attr':{'class':'form-control'}})}}
+    </div>
+    <div class="form-group">
+      {{form_label(form.Adresse)}}
+      {{form_widget(form.Adresse,{'attr':{'class':'form-control'}})}}
+    </div> 
+    <div class="form-group">
+      <button class="btn btn-success btn-block" >Modifier</button>
+    </div>
+      {{form_end(form)}}
+    </div>
+  </div>  
+</div>  
+{% endblock %}
+

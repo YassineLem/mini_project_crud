@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+<style>
+  .container {
+      text-align: center;
+  }
+
+  h1 {
+      margin: 20px 0; /* Adjust as needed */
+      color: red;
+  }
+
+  img {
+      display: block;
+      margin: 0 auto;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>Bienvenue sur l'application de la formation et de l'école - Ecole & Formation</h1>
+  <img class="img-fluid img-thumbnail" src="{{ asset('photo/image.jpeg') }}" alt="Example Image">
+</div>
+<footer style="margin-top:30px">
+  <p>
+    Bienvenue sur notre plateforme dédiée à l'éducation et à la formation. Ici, vous pouvez explorer et gérer les écoles ainsi que les formations associées. N'hésitez pas à ajouter de nouvelles écoles, à modifier les informations existantes et à découvrir les différentes formations offertes par chaque établissement.
+</p>
+
+</footer>
+{% endblock %}

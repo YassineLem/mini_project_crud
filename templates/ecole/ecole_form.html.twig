@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    <div class="container c1 mt-2">
+        <form action="{{ path('recherche_formation_par_ecole') }}" method="get">
+            <label for="ecole">Nom de l'école:</label>
+            <input type="text" id="ecole" name="ecole_nom">
+            <button class="btn btn-info" type="submit">Rechercher</button>
+        </form>
+
+        {% if ecole %}
+            <div class="card">
+                <div class="card-header">Ecole </div>
+                <div class="card-body" mt-5>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nom</th>
+                                <td>Adresse</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>{{ ecole.id }}</td>
+                                <td>{{ ecole.nom }}</td>
+                                <td>{{ ecole.adresse }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            {% if formations is not empty %}
+                <h3>Formations disponibles dans l'école:</h3>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nom</th>
+                            <th>Durée</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for formation in formations %}
+                            <tr>
+                                <td>{{ formation.id }}</td>
+                                <td>{{ formation.nom }}</td>
+                                <td>{{ formation.duree }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                <div class="card">
+                    <p style="text-align: center">Aucune formation trouvée pour l'école spécifiée.</p>
+                </div>
+            {% endif %}
+        {% endif %}
+    </div>
+    {% endblock %}

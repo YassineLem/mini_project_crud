@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %} {% block content %}
+<style>
+  h2 {
+    margin: 30px 0;
+    text-align: center;
+  }
+</style>
+
+<div class="container">
+  <h2>List des formation</h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Nom</th>
+        <th scope="col">Duree</th>
+        <th scope="col">Ecole</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for c in data %}
+      <tr>
+        <th scope="row">{{ c.id }}</th>
+        <td>{{ c.Nom }}</td>
+        <td>{{ c.Duree }}</td>
+        <td>{{ c.ecole.nom }}</td>
+        <td>
+          <a class="btn btn-info" href="{{ path('formation_update', { id: c.id }) }}">Modifier</a>
+          <a class="btn btn-danger" onclick="return confirm('Etes vous sure?')" href="{{ path('formation_delete', { id: c.id }) }}" >Supprimer</a>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+{% endblock %}
